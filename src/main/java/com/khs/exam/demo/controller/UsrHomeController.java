@@ -9,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.khs.exam.demo.vo.Article;
 
 @Controller
 public class UsrHomeController {
@@ -74,7 +72,7 @@ public class UsrHomeController {
 	@RequestMapping("usr/home/getArticle")
 	@ResponseBody
 	public Article getArticle() {
-		Article article = new Article(1, "제목1");
+		Article article = new Article(1, "제목1", "내용1");
 		
 		return article;
 	}
@@ -83,17 +81,9 @@ public class UsrHomeController {
 	@ResponseBody
 	public List<Article> getArticles() {
 		List<Article> articles = new ArrayList<>();
-		articles.add(new Article(1, "제목1"));
-		articles.add(new Article(2, "제목2"));
+		articles.add(new Article(1, "제목1", "내용2"));
+		articles.add(new Article(2, "제목2", "내용2"));
 				
 		return articles;
 	}
-}
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-class Article {
-	private int id;
-	private String title; 
 }
