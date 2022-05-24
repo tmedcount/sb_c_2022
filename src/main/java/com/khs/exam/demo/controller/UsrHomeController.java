@@ -30,9 +30,16 @@ public class UsrHomeController {
 		return "또 만나요~";
 	}
 	
-	@RequestMapping("/usr/home/main5")
+	@RequestMapping("/usr/home/main4")
 	@ResponseBody
 	public int showMain4() {
 		return count++;
+	}
+	
+	@RequestMapping("/usr/home/main5")
+	@ResponseBody
+	public String showMain5() {
+		count = 0;
+		return "count값이 0으로 초기화되었습니다.";
 	}
 }
