@@ -3,15 +3,19 @@ package com.khs.exam.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.khs.exam.demo.servcie.ArticleService;
 import com.khs.exam.demo.vo.Article;
 
 @Controller
 public class UsrArticleController {
 	// 인스턴스 변수 시작
+	@Autowired
+	private ArticleService articleService;
 	private int lastArticleId;
 	private List<Article> articles;
 	// 인스턴스 변수 끝
