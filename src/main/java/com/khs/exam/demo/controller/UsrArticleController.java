@@ -44,6 +44,20 @@ public class UsrArticleController {
 		
 		return article;
 	}
+		
+	@RequestMapping("usr/article/doModify")
+	@ResponseBody
+	public String doModify(int id, String title, String body) {
+		Article article = articleService.getArticle(id);
+		
+		if(article == null) {
+			return id + "번 게시물은 존재하지 않습니다.";
+		}
+		
+		articleService.modifyArticle(id, title, body);
+		
+		return id + "번 게시물을 수정하였습니다.";
+	}
 	
 	@RequestMapping("usr/article/doDelete")
 	@ResponseBody
@@ -57,20 +71,6 @@ public class UsrArticleController {
 		articleService.deleteArticle(id);
 		
 		return id + "번 게시물을 삭제하였습니다.";
-	}
-	
-	@RequestMapping("usr/article/doModify")
-	@ResponseBody
-	public String doModify(int id, String title, String body) {
-		Article article = articleService.getArticle(id);
-		
-		if(article == null) {
-			return id + "번 게시물은 존재하지 않습니다.";
-		}
-		
-		articleService.modifyArticle(id, title, body);
-		
-		return id + "번 게시물을 수정하였습니다.";
 	}
 	// 액션 메서드 끝
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.khs.exam.demo.Repository.ArticleRepository;
+import com.khs.exam.demo.repository.ArticleRepository;
 import com.khs.exam.demo.vo.Article;
 
 @Service
