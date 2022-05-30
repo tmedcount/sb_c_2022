@@ -19,10 +19,12 @@ public class UsrArticleController {
 	// 액션 메서드 시작
 	@RequestMapping("usr/article/doAdd")
 	@ResponseBody
-	public Article doAdd(String title, String body) {
-		Article article = articleService.writeArticle(title, body);
-				
-		return article;
+	public String doAdd(String title, String body) {
+		int id = articleService.writeArticle(title, body);
+		
+		Article article = articleService.getArticle(id);
+		
+		return article.getId() + "번 게시물을 생성하였습니다.";
 	}
 	
 	@RequestMapping("usr/article/getArticles")
