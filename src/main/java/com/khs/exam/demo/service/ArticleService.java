@@ -1,4 +1,4 @@
-package com.khs.exam.demo.servcie;
+package com.khs.exam.demo.service;
 
 import java.util.List;
 
