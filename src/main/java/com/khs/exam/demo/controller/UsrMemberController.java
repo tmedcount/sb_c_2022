@@ -34,7 +34,9 @@ public class UsrMemberController {
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
 		if(id == -1) {
-			return "이미 존재하는 로그인 아이디입니다."; 
+			return "해당 로그인 아이디는 이미 사용중입니다."; 
+		} else if(id == -2) {
+			return "해당 이름과 이메일은 이미 사용중입니다.";
 		}
 		
 		Member member = memberService.getMemberById(id);
