@@ -8,13 +8,17 @@ public class ResultData {
 	@Getter
 	private String msg;
 	@Getter
-	private String data1;
+	private Object data1;
 	
 	private ResultData() {
 		
 	}
+
+	public static ResultData from(String resultCode, String msg) {
+		return from(resultCode, msg, null);
+	}
 	
-	public ResultData from(String resultCode, String msg, String data1) {
+	public static ResultData from(String resultCode, String msg, Object data1) {
 		ResultData rd = new ResultData();
 		rd.resultCode = resultCode;
 		rd.msg = msg;
@@ -30,5 +34,4 @@ public class ResultData {
 	public boolean isFail() {
 		return isSuccess() == false;
 	}
-	
 }
