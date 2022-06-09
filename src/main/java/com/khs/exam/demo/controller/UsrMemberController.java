@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,6 +49,24 @@ public class UsrMemberController {
 		Member member = memberService.getMemberById(joinRd.getData1());
 		
 		return ResultData.newData(joinRd, member);
+	}
+	
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
+	public ResultData doLogout(HttpSession httpSession) {
+		boolean isLogined = true;
+		
+		if(httpSession.getAttribute("loginedMemberId") == null) {
+			isLogined = false;
+		}
+		
+		if(!isLogined) {
+			return ResultData.from("S-1", "이미 로그아웃 상태입니다.");
+		}
+		
+		httpSession.removeAttribute("loginedMemberId");
+		
+		return ResultData.from("S-2", "로그아웃 되었습니다.");
 	}
 	
 	@RequestMapping("/usr/member/doLogin")
